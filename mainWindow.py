@@ -62,7 +62,8 @@ class MainWindow(QMainWindow):
         if file_path:
             print(f'选择的文件路径：{file_path}')
             self.file_path = file_path
-            if pointcloud_recognize(file_path).all():
+            _, signal = pointcloud_recognize(file_path)
+            if signal:
                 self.path_label.setText('file path: Confirmed')
             else:
                 self.path_label.setText('Please select another file!')
